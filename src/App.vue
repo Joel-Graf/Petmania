@@ -1,60 +1,88 @@
 <template>
   <v-app>
-    <v-app-bar
+    <v-navigation-drawer
       app
-      color="primary"
-      dark
+      v-model="drawer"
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Petmania
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Petmania - Sistema de Petshop
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-divider></v-divider>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+      <v-list
+        nav
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          :to='item.path'
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              {{item.title}}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+
+      <!-- #TODO: Fazer lógica de deslogar e voltar pra tela de Login -->
+      <!-- #TODO: Arrumar Vizual igual da Lista -->
+      <template v-slot:append>
+        <v-list-item 
+          link
+          :to="'/Login'"
+        >
+          <v-list-item-icon>
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            Deslogar
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+
+
+    </v-navigation-drawer>
+
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>{{this.$route.name}}</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
-      <HelloWorld/>
+    <v-main>   
+      <v-container fluid>
+        <router-view>
+        </router-view>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    data: () => ({ 
+      drawer: null,
+      items: [
+        {title: 'Atendimentos', icon: 'mdi-calendar-clock', path: '/'},
+        {title: 'Clientes', icon: 'mdi-account-group', path: '/Clients'},
+        {title: 'Pets', icon: 'mdi-paw', path: '/Pets'},
+        {title: 'Serviços', icon: 'mdi-offer', path: '/Services'},
+        {title: 'Promoções', icon: 'mdi-sale', path: '/Promotions'}
+      ],
+    }),
+  }
 </script>
