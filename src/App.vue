@@ -40,7 +40,6 @@
 
 
       <!-- #TODO: Fazer lógica de deslogar e voltar pra tela de Login -->
-      <!-- #TODO: Arrumar Vizual igual da Lista -->
       <template v-slot:append>
         <v-list-item 
           link
@@ -81,6 +80,7 @@
         {title: 'Clientes', icon: 'mdi-account-group', path: '/Clients'},
         {title: 'Pets', icon: 'mdi-paw', path: '/Pets'},
         {title: 'Serviços', icon: 'mdi-offer', path: '/Services'},
+        {title: 'Planos', icon: 'mdi-offer', path: '/Planos'},
         {title: 'Promoções', icon: 'mdi-sale', path: '/Promotions'}
       ],
     }),

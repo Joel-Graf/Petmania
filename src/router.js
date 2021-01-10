@@ -10,6 +10,7 @@ import Appointments from './views/Appointments.vue'
 import Clients from './views/Clients.vue'
 import Pets from './views/Pets.vue'
 import Services from './views/Services.vue'
+import Plans from './views/Plans.vue'
 import Promotions from './views/Promotions.vue'
 
 export default new Router({
@@ -21,6 +22,7 @@ export default new Router({
     {path: '/Clients', name: 'Clientes', component: Clients},
     {path: '/Pets', name: 'Pets', component: Pets},
     {path: '/Services', name: 'Serviços', component: Services},
+    {path: '/Plans', name: 'Planos', component: Plans},
     {path: '/Promotions', name: 'Promoções', component: Promotions}
   ]
 })
