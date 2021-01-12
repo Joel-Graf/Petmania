@@ -17,12 +17,14 @@ export default new Router({
   routes: [
     // Main Views
     {path: '/Login', name: 'Login', component: Login},
-    {path: '/', name: 'Atendimentos', component: Appointments},
+    {path: '/Appointments', name: 'Atendimentos', component: Appointments},
     // List Views
     {path: '/Clients', name: 'Clientes', component: Clients},
     {path: '/Pets', name: 'Pets', component: Pets},
     {path: '/Services', name: 'Serviços', component: Services},
     {path: '/Plans', name: 'Planos', component: Plans},
-    {path: '/Promotions', name: 'Promoções', component: Promotions}
+    {path: '/Promotions', name: 'Promoções', component: Promotions},
+    // Default
+    {path: '*', redirect: '/Appointments'}
   ]
 })
