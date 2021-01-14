@@ -1,24 +1,29 @@
 <template>
   <v-app>
+    <!-- #TODO: Trazer os icones como arquivo local, quando cai a internet eles não carregam -->
     <!-- Nagivation Menu -->
     <v-navigation-drawer
       app
       :mini-variant="drawer"
     >
+      <!-- Header -->
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
+            <!-- #TODO: Inserir Logo grande e Pequeno da Empresa, ou apenas nome  -->
             Petmania
           </v-list-item-title>
           <v-list-item-subtitle>
+            <!-- #TODO: Nome do sistema -->
             Petmania - Sistema de Petshop
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+
       <v-divider></v-divider>
-      <v-list
-        nav
-      >
+
+      <!-- Menu -->
+      <v-list nav>
         <v-list-item
           v-for="item in items"
           :key="item.title"
@@ -28,7 +33,6 @@
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
-
           <v-list-item-content>
             <v-list-item-title>
               {{item.title}}
@@ -36,20 +40,25 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
+      <!-- Logout -->
       <!-- #TODO: Fazer lógica de deslogar e voltar pra tela de Login -->
       <template v-slot:append>
-        <v-list-item 
-          link
-          :to="'/Login'"
-        >
-          <v-list-item-icon>
-            <v-icon>mdi-logout</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            Deslogar
-          </v-list-item-content>
-        </v-list-item>
+        <v-list nav>
+          <v-list-item 
+            :to="'/Login'"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon>mdi-logout</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              Deslogar
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </template>
+
     </v-navigation-drawer>
 
     <!-- App Bar -->
@@ -66,6 +75,7 @@
         </transition>
       </v-container>
     </v-main>
+
   </v-app>
 </template>
 
@@ -78,8 +88,9 @@
         {title: 'Clientes', icon: 'mdi-account-group', path: '/Clients'},
         {title: 'Pets', icon: 'mdi-paw', path: '/Pets'},
         {title: 'Serviços', icon: 'mdi-offer', path: '/Services'},
-        {title: 'Planos', icon: 'mdi-gift', path: '/Plans'},
-        {title: 'Promoções', icon: 'mdi-sale', path: '/Promotions'}
+        // #FIXME: Módulos não inclusos no MVP
+        // {title: 'Planos', icon: 'mdi-gift', path: '/Plans'},
+        // {title: 'Promoções', icon: 'mdi-sale', path: '/Promotions'}
       ],
     })
   }

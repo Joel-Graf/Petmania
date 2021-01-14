@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- {{items}} -->
     <AppTable 
       :filters="'Clientes'"
       :headers="headers"
@@ -15,16 +14,17 @@ export default {
   components: { AppTable },
   data() {
     return {
-      headers: [
+      defaultHeaders: [
         { text: 'Nome', value: 'name' },
         { text: 'Endereço', value: 'address' },
         { text: 'Cidade', value: 'city' },
         { text: 'UF', value: 'uf' },
-        { text: 'Telefone', value: 'phone1' },
-        { text: 'Telefone (2)', value: 'phone2' },
+        { text: 'Telefone', value: 'phone' },
+        { text: 'Telefone (2)', value: 'phone_alt' },
         { text: 'Observações', value: 'observations' },
         { text: 'Ativo', value: 'active'}
       ],
+      headers: [],
       items: []
     }
   },
@@ -37,6 +37,7 @@ export default {
     }
   },
   mounted() {
+    this.headers = this.defaultHeaders;
     this.getClients();
   }
 }

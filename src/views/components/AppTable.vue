@@ -38,12 +38,26 @@ export default {
   },
   data() {
     return {
-      search: ''
+      search: '',
+      // Data passed by props
+      tb_filters: '',
+      tb_headers: [],
+      tb_items: []
     }
+  },
+  methods: {
+    refresh() {
+      //#TODO: Fazer lógica de atualização de dados com $emit 
+    },
+  },
+  mounted() {
+    this.tb_filters = this.filters;
+    this.tb_headers = this.headers;
+    this.tb_items = this.items;
   }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
